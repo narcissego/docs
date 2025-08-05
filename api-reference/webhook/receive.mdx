@@ -1,0 +1,54 @@
+---
+title: "Receive webhook"
+api: "POST /your-webhook-route/"
+---
+
+<CodeGroup>
+
+```javascript receiveWebhook.js
+const crypto = require("crypto");
+
+// Replace this endpoint secret with your unique endpoint secret key
+const endpointSecret = "your-secret-key"; // process.env.STAYTION_SECRET_KEY
+
+function verifySignature(payload, signature) {
+  const secretKey = endpointSecret;
+  const hmac = crypto.createHmac("sha512", secretKey);
+  hmac.update(JSON.stringify(payload));
+  const computedSignature = hmac.digest("hex");
+  return computedSignature === signature;
+}
+
+app.post("/my/webhook/url", (request, response) => {
+  const event = request.body;
+
+  const signature = request.headers["x-staytion-signature"];
+  const isValid = verifySignature(request.body, signature);
+
+  if (!isValid) {
+    console.log(`⚠️  Webhook signature verification failed.`);
+    return response.send(400);
+  }
+
+  // Handle the event
+  switch (event.event) {
+    case "booking.created":
+      const booking = event.data.object;
+      // handleBookingCreated(booking);
+      break;
+    case "booking.cancellation":
+      const booking = event.data.object;
+      // Then define and call a method to handle the booking cancellation.
+      // handleBookingCancellation(booking);
+      break;
+    // ... handle other event types
+    default:
+      console.log(`Unhandled event type ${event.type}`);
+  }
+
+  // Return a response to acknowledge receipt of the event
+  response.json({ received: true });
+});
+```
+
+</CodeGroup>

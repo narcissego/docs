@@ -1,0 +1,21 @@
+---
+title: "The Webhook endpoint object"
+---
+
+## Properties
+
+<ParamField path="id" type="string" required>
+  The unique identifier of the webhook endpoint.
+</ParamField>
+
+<ParamField path="url" type="string" required>
+  The URL of the webhook endpoint.
+</ParamField>
+
+<ParamField path="events" type="array" required>
+  The events to subscribe to.
+</ParamField>
+
+<ParamField path="created" type="number" required>
+  The Unix timestamp of when the webhook was created.
+</ParamField>

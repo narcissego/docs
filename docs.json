@@ -1,9 +1,9 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Staytion Partner Docs",
   "colors": {
-    "primary": "#16A34A",
+    "primary": "#007E80",
     "light": "#07C983",
     "dark": "#15803D"
   },
@@ -11,58 +11,21 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Getting started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          }
-        ]
-      },
-      {
         "tab": "API reference",
         "groups": [
           {
             "group": "API documentation",
             "pages": [
-              "api-reference/introduction"
+              "api-reference/authentication",
+              "api-reference/errors"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Webhooks",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/webhook/introduction",
+              "api-reference/webhook/event-structure",
+              "api-reference/webhook/receive"
             ]
           }
         ]
@@ -71,38 +34,28 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
+          "anchor": "Staytion",
+          "href": "https://gostaytion.com",
           "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
         }
       ]
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/staytion_logo_w.svg",
+    "dark": "/logo/staytion_logo_w.svg"
   },
   "navbar": {
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:hi@gostaytion.com"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://partner.gostaytion.com"
     }
   },
   "contextual": {
@@ -119,9 +72,9 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/gostaytion",
+      "github": "https://github.com/gostaytion",
+      "linkedin": "https://linkedin.com/company/gostaytion"
     }
   }
 }

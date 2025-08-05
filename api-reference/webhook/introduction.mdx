@@ -1,0 +1,63 @@
+---
+title: "Introduction"
+---
+
+Generally, when you make a request to an API endpoint, you expect to get a near-immediate response. However, some requests may take a long time to process, which can lead to timeout errors. In order to prevent a timeout error, a pending response is returned. Since your records need to be updated with the final state of the request, you need to either:
+
+- Make a request for an update (popularly known as polling) or,
+- Listen to events by using a webhook URL.
+
+Webhooks allow you to set up a notification system that can be used to receive updates on certain requests made to the Staytion API.
+
+<Info>
+  Webhooks are a way to receive notifications from the Staytion API when certain
+  events occur such as booking confirmation, booking cancellation, booking
+  update, etc.
+</Info>
+
+### Verify event origin
+
+Since your webhook URL is publicly available, you need to verify that events originate from Staytion and not a bad actor.
+
+#### Signature validation
+
+Events sent from Staytion carry the `x-staytion-signature` header. The value of this header is a HMAC SHA512 signature of the event payload signed using your `secret key`. Verifying the header signature should be done before processing the event:
+
+<CodeGroup>
+
+```javascript verifySignature.js
+const crypto = require("crypto");
+function verifySignature(payload, signature) {
+  const secretKey = "your-secret-key";
+  const hmac = crypto.createHmac("sha512", secretKey);
+  hmac.update(JSON.stringify(payload));
+  const computedSignature = hmac.digest("hex");
+  return computedSignature === signature;
+}
+```
+
+```python verifySignature.py
+import hmac
+import hashlib
+import json
+
+def verify_signature(payload, signature):
+    secret_key = "your-secret-key"
+    hmac_obj = hmac.new(secret_key.encode(), payload.encode(), hashlib.sha512)
+    computed_signature = hmac_obj.hexdigest()
+    return computed_signature == signature
+```
+
+```java verifySignature.java
+class verifySignature {
+    public static boolean verifySignature(String payload, String signature) {
+        String secretKey = "your-secret-key";
+        Mac mac = Mac.getInstance("HmacSHA512");
+        mac.init(new SecretKeySpec(secretKey.getBytes(), "HmacSHA512"));
+        byte[] computedSignature = mac.doFinal(payload.getBytes());
+        return computedSignature.equals(signature);
+    }
+}
+```
+
+</CodeGroup>

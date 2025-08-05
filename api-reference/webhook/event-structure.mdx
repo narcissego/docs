@@ -1,0 +1,43 @@
+---
+title: "The Webhook event structure"
+---
+
+The webhook event structure is a JSON object that contains the event type and the event data. The event data is the object that triggered the event.
+
+### Sample event object
+
+```json
+{
+  "event": "booking.confirmation",
+  "data": {
+    "id": "2695d6fb-6b7a-41b1-9902-487a5cc6c201",
+    "total_quantity": 1,
+    "total_pax": 1,
+    "user_uid": "KgJrSwIXvCdwo7Kp9zG85lstgfS2",
+    "listing_id": "360e3958-9bfd-4f72-97ec-211fd5cd134a",
+    "cancellation_reason": null,
+    "checkin_at": "2023-08-04T09:09:37.538+00:00",
+    "checkout_at": "2023-08-04T10:00:00.109+00:00",
+    "short_id": "SY-UDWXGIGD",
+    "booking_mode": "hour",
+    "rate_id": null,
+    "status": "confirmed",
+    "created_at": "2023-08-11T08:10:26.253158+00:00",
+    "updated_at": "2023-09-03T10:00:08.834032+00:00"
+  }
+}
+```
+
+## Properties
+
+<ParamField path="event" type="string" required>
+  The event type.
+</ParamField>
+
+<ParamField path="data" type="object" required>
+  The event data.
+</ParamField>
+
+<ParamField path="data.id" type="string" required>
+  The unique identifier of the object.
+</ParamField>
