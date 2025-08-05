@@ -32,11 +32,11 @@ app.post("/my/webhook/url", (request, response) => {
 
   // Handle the event
   switch (event.event) {
-    case "booking.created":
+    case "booking.confirmed":
       const booking = event.data.object;
       // handleBookingCreated(booking);
       break;
-    case "booking.cancellation":
+    case "booking.cancelled":
       const booking = event.data.object;
       // Then define and call a method to handle the booking cancellation.
       // handleBookingCancellation(booking);
